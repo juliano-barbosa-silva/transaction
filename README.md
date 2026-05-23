@@ -1,8 +1,8 @@
-# 🚀 Desafio CodeSignal - Senior Software Engineer Java (Estilo Nubank)
+# 🚀 Desafio CodeSignal - Senior Software Engineer Java
 
 ## 📌 Objetivo
 
-Este repositório contém um desafio técnico inspirado no processo utilizado pelo CodeSignal para vagas de **Senior Software Engineer** em empresas de alta performance como o Nubank.
+Este repositório contém um desafio técnico inspirado no processo utilizado pelo CodeSignal para vagas de **Senior Software Engineer** em empresas de alta performance.
 
 O desafio foi dividido em **4 fases progressivas**, aumentando gradualmente o nível de:
 
