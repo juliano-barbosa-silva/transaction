@@ -1,4 +1,4 @@
-package br.com.transaction.codesignal_java_challenge.service;
+package br.com.transaction.codesignal_java_challenge.aplication.usecase;
 
 import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
 import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;

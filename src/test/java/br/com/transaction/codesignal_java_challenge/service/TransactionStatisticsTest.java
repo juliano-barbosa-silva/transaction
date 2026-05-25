@@ -1,8 +1,9 @@
 package br.com.transaction.codesignal_java_challenge.service;
 
+import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatistics;
 import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
 import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
-import br.com.transaction.codesignal_java_challenge.service.impl.TransactionStatisticsImpl;
+import br.com.transaction.codesignal_java_challenge.aplication.service.impl.TransactionStatisticsImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

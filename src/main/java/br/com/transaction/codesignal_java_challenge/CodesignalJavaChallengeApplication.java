@@ -2,8 +2,8 @@ package br.com.transaction.codesignal_java_challenge;
 
 import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
 import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
-import br.com.transaction.codesignal_java_challenge.service.TransactionStatistics;
-import br.com.transaction.codesignal_java_challenge.service.impl.TransactionStatisticsImpl;
+import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatistics;
+import br.com.transaction.codesignal_java_challenge.aplication.service.impl.TransactionStatisticsImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
