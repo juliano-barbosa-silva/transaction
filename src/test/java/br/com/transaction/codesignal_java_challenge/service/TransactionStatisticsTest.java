@@ -1,23 +1,32 @@
-package br.com.transaction.codesignal_java_challenge;
+package br.com.transaction.codesignal_java_challenge.service;
 
 import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
 import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
-import br.com.transaction.codesignal_java_challenge.service.impl.TransactionStatistics;
+import br.com.transaction.codesignal_java_challenge.service.impl.TransactionStatisticsImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class TransactionStatisticsTest {
 
-    @InjectMocks
     private TransactionStatistics transactionStatistics;
 
+    @BeforeEach
+    void setUp(){
+        transactionStatistics = new TransactionStatisticsImpl();
+    }
+
     @Test
+    @DisplayName("Teste execucao completa")
     void validateTransaction(){
         List<Transaction> transactions = List.of(
 
@@ -57,6 +66,20 @@ class TransactionStatisticsTest {
 
         Optional<TransactionStatisticsDTO> result =
                 transactionStatistics.operations(transactions);
+
+        assertTrue(result.isPresent());
+
+    }
+    @Test
+    @DisplayName("teste com lista vazia")
+    void transactionEmpty(){
+
+        List<Transaction> transactionList = new ArrayList<>();
+
+        Optional<TransactionStatisticsDTO> result =
+                transactionStatistics.operations(transactionList);
+
+        assertTrue(result.isEmpty());
 
     }
 

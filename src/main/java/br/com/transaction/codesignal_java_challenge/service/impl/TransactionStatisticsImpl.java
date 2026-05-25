@@ -2,6 +2,7 @@ package br.com.transaction.codesignal_java_challenge.service.impl;
 
 import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
 import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
+import br.com.transaction.codesignal_java_challenge.service.TransactionStatistics;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
