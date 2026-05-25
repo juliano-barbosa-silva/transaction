@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TransactionStatisticsTest {
@@ -66,8 +67,17 @@ class TransactionStatisticsTest {
 
         Optional<TransactionStatisticsDTO> result =
                 transactionStatistics.operations(transactions);
+        var dto = result.get();
 
         assertTrue(result.isPresent());
+//        Soma total: 450.00
+        assertEquals(new BigDecimal("450.00"), dto.total());
+//        Média: 150.00
+        assertEquals(new BigDecimal("150.00"), dto.average());
+//        Maior transação: 250.00
+        assertEquals(new BigDecimal("250.00"), dto.max());
+//        Menor transação: 100.00
+        assertEquals(new BigDecimal("100.00"), dto.min());
 
     }
     @Test
