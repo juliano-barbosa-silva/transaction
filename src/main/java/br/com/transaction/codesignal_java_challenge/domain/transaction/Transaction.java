@@ -1,4 +1,4 @@
-package br.com.transaction.codesignal_java_challenge.domain.model;
+package br.com.transaction.codesignal_java_challenge.domain.transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

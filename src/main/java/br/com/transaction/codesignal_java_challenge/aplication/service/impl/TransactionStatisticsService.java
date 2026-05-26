@@ -1,14 +1,17 @@
-package br.com.transaction.codesignal_java_challenge.service.impl;
+package br.com.transaction.codesignal_java_challenge.aplication.service.impl;
 
-import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
-import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
+import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatisticsUseCase;
+import br.com.transaction.codesignal_java_challenge.domain.transaction.Transaction;
+import br.com.transaction.codesignal_java_challenge.domain.transaction.TransactionStatisticsDTO;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class TransactionStatisticsImpl implements TransactionStatistics {
+@Service
+public class TransactionStatisticsService implements TransactionStatisticsUseCase {
 
     @Override
     public Optional<TransactionStatisticsDTO> operations(List<Transaction> transactionList) {

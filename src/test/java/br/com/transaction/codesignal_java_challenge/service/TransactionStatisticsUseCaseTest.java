@@ -1,24 +1,35 @@
-package br.com.transaction.codesignal_java_challenge;
+package br.com.transaction.codesignal_java_challenge.service;
 
+import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatisticsUseCase;
 import br.com.transaction.codesignal_java_challenge.domain.transaction.Transaction;
 import br.com.transaction.codesignal_java_challenge.domain.transaction.TransactionStatisticsDTO;
-import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatisticsUseCase;
 import br.com.transaction.codesignal_java_challenge.aplication.service.impl.TransactionStatisticsService;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@SpringBootApplication
-public class CodesignalJavaChallengeApplication {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    public static void main(String[] args) {
-        SpringApplication.run(CodesignalJavaChallengeApplication.class, args);
+class TransactionStatisticsUseCaseTest {
 
+    private TransactionStatisticsUseCase transactionStatisticsUseCase;
+
+    @BeforeEach
+    void setUp(){
+        transactionStatisticsUseCase = new TransactionStatisticsService();
+    }
+
+    @Test
+    @DisplayName("Teste execucao completa")
+    void validateTransaction(){
         List<Transaction> transactions = List.of(
 
                 new Transaction(
@@ -55,21 +66,33 @@ public class CodesignalJavaChallengeApplication {
                 )
         );
 
-        TransactionStatisticsUseCase statisticsService =
-                new TransactionStatisticsService();
+        Optional<TransactionStatisticsDTO> result =
+                transactionStatisticsUseCase.operations(transactions);
+        var dto = result.get();
+
+        assertTrue(result.isPresent());
+//        Soma total: 450.00
+        assertEquals(new BigDecimal("450.00"), dto.total());
+//        Média: 150.00
+        assertEquals(new BigDecimal("150.00"), dto.average());
+//        Maior transação: 250.00
+        assertEquals(new BigDecimal("250.00"), dto.max());
+//        Menor transação: 100.00
+        assertEquals(new BigDecimal("100.00"), dto.min());
+
+    }
+    @Test
+    @DisplayName("teste com lista vazia")
+    void transactionEmpty(){
+
+        List<Transaction> transactionList = new ArrayList<>();
 
         Optional<TransactionStatisticsDTO> result =
-                statisticsService.operations(transactions);
+                transactionStatisticsUseCase.operations(transactionList);
 
-        result.ifPresent(statistics -> {
+        assertTrue(result.isEmpty());
 
-            System.out.println("Soma total: " + statistics.total());
-            System.out.println("Média: " + statistics.average());
-            System.out.println("Maior transação: " + statistics.max());
-            System.out.println("Menor transação: " + statistics.min());
-            System.out.println("Duplicadas: " + statistics.duplicatedTransactions());
-
-        });
     }
+
 
 }
