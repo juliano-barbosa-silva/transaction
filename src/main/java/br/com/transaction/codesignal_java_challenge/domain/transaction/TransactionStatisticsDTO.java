@@ -1,4 +1,4 @@
-package br.com.transaction.codesignal_java_challenge.dto;
+package br.com.transaction.codesignal_java_challenge.domain.transaction;
 
 import java.math.BigDecimal;
 

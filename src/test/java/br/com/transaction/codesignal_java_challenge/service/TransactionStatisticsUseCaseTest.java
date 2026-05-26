@@ -1,9 +1,9 @@
 package br.com.transaction.codesignal_java_challenge.service;
 
-import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatistics;
-import br.com.transaction.codesignal_java_challenge.domain.model.Transaction;
-import br.com.transaction.codesignal_java_challenge.dto.TransactionStatisticsDTO;
-import br.com.transaction.codesignal_java_challenge.aplication.service.impl.TransactionStatisticsImpl;
+import br.com.transaction.codesignal_java_challenge.aplication.usecase.TransactionStatisticsUseCase;
+import br.com.transaction.codesignal_java_challenge.domain.transaction.Transaction;
+import br.com.transaction.codesignal_java_challenge.domain.transaction.TransactionStatisticsDTO;
+import br.com.transaction.codesignal_java_challenge.aplication.service.impl.TransactionStatisticsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,13 +18,13 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TransactionStatisticsTest {
+class TransactionStatisticsUseCaseTest {
 
-    private TransactionStatistics transactionStatistics;
+    private TransactionStatisticsUseCase transactionStatisticsUseCase;
 
     @BeforeEach
     void setUp(){
-        transactionStatistics = new TransactionStatisticsImpl();
+        transactionStatisticsUseCase = new TransactionStatisticsService();
     }
 
     @Test
@@ -67,7 +67,7 @@ class TransactionStatisticsTest {
         );
 
         Optional<TransactionStatisticsDTO> result =
-                transactionStatistics.operations(transactions);
+                transactionStatisticsUseCase.operations(transactions);
         var dto = result.get();
 
         assertTrue(result.isPresent());
@@ -88,7 +88,7 @@ class TransactionStatisticsTest {
         List<Transaction> transactionList = new ArrayList<>();
 
         Optional<TransactionStatisticsDTO> result =
-                transactionStatistics.operations(transactionList);
+                transactionStatisticsUseCase.operations(transactionList);
 
         assertTrue(result.isEmpty());
 
