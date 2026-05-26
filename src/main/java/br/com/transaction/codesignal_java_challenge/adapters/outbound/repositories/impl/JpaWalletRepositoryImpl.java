@@ -4,26 +4,28 @@ import br.com.transaction.codesignal_java_challenge.adapters.outbound.entities.W
 import br.com.transaction.codesignal_java_challenge.adapters.outbound.repositories.JpaWalletRepository;
 import br.com.transaction.codesignal_java_challenge.domain.wallet.Wallet;
 import br.com.transaction.codesignal_java_challenge.domain.wallet.WalletRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.transaction.codesignal_java_challenge.utills.WalletMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class WalletRepositoryImpl implements WalletRepository {
+@Component
+public class JpaWalletRepositoryImpl implements WalletRepository {
 
     private final JpaWalletRepository jpaWalletRepository;
+    private WalletMapper walletMapper;
 
-    public WalletRepositoryImpl(JpaWalletRepository jpaWalletRepository) {
+    public JpaWalletRepositoryImpl(JpaWalletRepository jpaWalletRepository, WalletMapper walletMapper) {
         this.jpaWalletRepository = jpaWalletRepository;
     }
 
 
     @Override
     public Wallet save(Wallet wallet) {
-        WalletEntity walletEntity = new WalletEntity(wallet);
-        this.jpaWalletRepository.save(walletEntity);
+        this.jpaWalletRepository.save(walletMapper.toEntity(wallet));
         return wallet;
     }
 

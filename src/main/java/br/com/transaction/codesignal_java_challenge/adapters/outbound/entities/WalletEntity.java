@@ -23,11 +23,7 @@ public class WalletEntity {
     @Column(name = "balance", nullable = false)
     private BigDecimal balance;
 
-
-    public WalletEntity(Wallet wallet){
-        this.id = wallet.getId();
-        this.owner = wallet.getOwner();
-        this.balance = wallet.getBalance();
+    public WalletEntity() {
     }
 
     public UUID getId() {
