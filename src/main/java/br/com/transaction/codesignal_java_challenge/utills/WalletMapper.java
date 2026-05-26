@@ -3,8 +3,9 @@ package br.com.transaction.codesignal_java_challenge.utills;
 import br.com.transaction.codesignal_java_challenge.adapters.outbound.entities.WalletEntity;
 import br.com.transaction.codesignal_java_challenge.domain.wallet.Wallet;
 import br.com.transaction.codesignal_java_challenge.domain.wallet.WalletDTO;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class WalletMapper {
 
     public Wallet toDomain(WalletEntity entity) {

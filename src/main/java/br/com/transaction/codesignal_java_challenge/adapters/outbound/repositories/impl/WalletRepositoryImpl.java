@@ -13,12 +13,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class JpaWalletRepositoryImpl implements WalletRepository {
+public class WalletRepositoryImpl implements WalletRepository {
 
     private final JpaWalletRepository jpaWalletRepository;
     private final WalletMapper walletMapper;
 
-    public JpaWalletRepositoryImpl(JpaWalletRepository jpaWalletRepository, WalletMapper walletMapper) {
+    public WalletRepositoryImpl(JpaWalletRepository jpaWalletRepository, WalletMapper walletMapper) {
         this.jpaWalletRepository = jpaWalletRepository;
         this.walletMapper = walletMapper;
     }
