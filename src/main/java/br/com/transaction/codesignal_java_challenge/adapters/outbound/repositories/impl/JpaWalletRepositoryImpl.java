@@ -16,10 +16,11 @@ import java.util.stream.Collectors;
 public class JpaWalletRepositoryImpl implements WalletRepository {
 
     private final JpaWalletRepository jpaWalletRepository;
-    private WalletMapper walletMapper;
+    private final WalletMapper walletMapper;
 
     public JpaWalletRepositoryImpl(JpaWalletRepository jpaWalletRepository, WalletMapper walletMapper) {
         this.jpaWalletRepository = jpaWalletRepository;
+        this.walletMapper = walletMapper;
     }
 
 
